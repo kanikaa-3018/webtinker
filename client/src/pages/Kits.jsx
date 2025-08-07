@@ -1,4 +1,3 @@
-// src/pages/KitsPage.jsx
 import React from "react";
 import KitCard from "../components/KitCard";
 
@@ -9,7 +8,7 @@ const kits = [
     outcome: "Build logic, programming, and mechanical design skills.",
     price: 2999,
     image:
-      "https://images.unsplash.com/photo-1558137623-ce933996c730?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8cm9ib3RpY3N8ZW58MHwwfDB8fHww",
+      "https://images.unsplash.com/photo-1558137623-ce933996c730?w=600&auto=format&fit=crop&q=60",
     includes: [
       "1x Microcontroller board (Arduino-compatible)",
       "4x Motors + Wheels",
@@ -18,9 +17,9 @@ const kits = [
       "Beginner Guide Booklet",
     ],
     images: [
-      "https://images.unsplash.com/photo-1558137623-ce933996c730?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8cm9ib3RpY3N8ZW58MHwwfDB8fHww",
-      "https://plus.unsplash.com/premium_photo-1683134129583-dcdc447d36a6?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTN8fHJvYm90aWNzfGVufDB8MHwwfHx8MA%3D%3D",
-      "https://images.unsplash.com/photo-1612338762643-298feee70520?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fHJvYm90aWNzfGVufDB8MHwwfHx8MA%3D%3D",
+      "https://images.unsplash.com/photo-1558137623-ce933996c730?w=600&auto=format&fit=crop&q=60",
+      "https://plus.unsplash.com/premium_photo-1683134129583-dcdc447d36a6?w=600&auto=format&fit=crop&q=60",
+      "https://images.unsplash.com/photo-1612338762643-298feee70520?w=600&auto=format&fit=crop&q=60",
     ],
     safety:
       "Avoid water contact. Supervise children under 10. Do not short-circuit terminals.",
@@ -33,7 +32,7 @@ const kits = [
     outcome: "Learn WiFi automation, smart devices, and real-world IoT applications.",
     price: 3499,
     image:
-      "https://images.unsplash.com/photo-1555664424-778a1e5e1b48?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8aW90fGVufDB8MHwwfHx8MA%3D%3D",
+      "https://images.unsplash.com/photo-1555664424-778a1e5e1b48?w=600&auto=format&fit=crop&q=60",
     includes: [
       "1x NodeMCU WiFi Board",
       "Relay Module",
@@ -42,9 +41,9 @@ const kits = [
       "Mobile App Setup Guide",
     ],
     images: [
-      "https://plus.unsplash.com/premium_photo-1688678097473-2ce11d23e30c?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8aW90fGVufDB8MHwwfHx8MA%3D%3D",
-      "https://images.unsplash.com/photo-1555664424-778a1e5e1b48?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8aW90fGVufDB8MHwwfHx8MA%3D%3D",
-      "https://images.unsplash.com/photo-1605387132052-357a341cc515?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjR8fGlvdHxlbnwwfDB8MHx8fDA%3D",
+      "https://plus.unsplash.com/premium_photo-1688678097473-2ce11d23e30c?w=600&auto=format&fit=crop&q=60",
+      "https://images.unsplash.com/photo-1555664424-778a1e5e1b48?w=600&auto=format&fit=crop&q=60",
+      "https://images.unsplash.com/photo-1605387132052-357a341cc515?w=600&auto=format&fit=crop&q=60",
     ],
     safety:
       "Use low-voltage appliances only. Adult supervision required while wiring relays.",
@@ -57,7 +56,7 @@ const kits = [
     outcome: "Master concepts of aerodynamics, electronics, and wireless control.",
     price: 4999,
     image:
-      "https://images.unsplash.com/photo-1521405924368-64c5b84bec60?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGRyb25lfGVufDB8MHwwfHx8MA%3D%3D",
+      "https://images.unsplash.com/photo-1521405924368-64c5b84bec60?w=600&auto=format&fit=crop&q=60",
     includes: [
       "4x Brushless Motors + Propellers",
       "Flight Controller",
@@ -66,9 +65,9 @@ const kits = [
       "Assembly Manual + Safety Checklist",
     ],
     images: [
-      "https://images.unsplash.com/photo-1521405924368-64c5b84bec60?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGRyb25lfGVufDB8MHwwfHx8MA%3D%3D",
-      "https://images.unsplash.com/photo-1486611367184-17759508999c?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fGRyb25lfGVufDB8MHwwfHx8MA%3D%3D",
-      "https://images.unsplash.com/photo-1469313785555-277fa0c1dc9e?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjZ8fGRyb25lfGVufDB8MHwwfHx8MA%3D%3D",
+      "https://images.unsplash.com/photo-1521405924368-64c5b84bec60?w=600&auto=format&fit=crop&q=60",
+      "https://images.unsplash.com/photo-1486611367184-17759508999c?w=600&auto=format&fit=crop&q=60",
+      "https://images.unsplash.com/photo-1469313785555-277fa0c1dc9e?w=600&auto=format&fit=crop&q=60",
     ],
     safety:
       "Use only in open areas. Keep away from face and fragile objects. Charge battery under supervision.",
@@ -80,8 +79,13 @@ const kits = [
 const Kits = () => {
   const sectionStyle = {
     minHeight: "100vh",
-    padding: "60px 20px",
+    padding: "60px 5vw",
     background: "linear-gradient(to bottom, #fff, #eef2ff)",
+  };
+
+  const contentWrapper = {
+    maxWidth: "1200px",
+    margin: "0 auto",
   };
 
   const gridStyle = {
@@ -100,11 +104,13 @@ const Kits = () => {
 
   return (
     <section style={sectionStyle}>
-      <h2 style={titleStyle}>Explore Our STEM Learning Kits</h2>
-      <div style={gridStyle}>
-        {kits.map((kit) => (
-          <KitCard key={kit.id} kit={kit} />
-        ))}
+      <div style={contentWrapper}>
+        <h2 style={titleStyle}>Explore Our STEM Learning Kits</h2>
+        <div style={gridStyle}>
+          {kits.map((kit) => (
+            <KitCard key={kit.id} kit={kit} />
+          ))}
+        </div>
       </div>
     </section>
   );

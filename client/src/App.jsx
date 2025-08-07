@@ -131,6 +131,7 @@ import Cancel from './pages/Cancel';
 import CourseSuccess from './pages/CourseSuccess';
 import StudentAuth from './pages/StudentAuth';
 import CompleteProfile from './pages/CompleteProfile';
+import Profile from './pages/Profile';
 
 // Component handling routes with animation
 const AnimatedRoutes = () => {
@@ -142,6 +143,7 @@ const AnimatedRoutes = () => {
         <Route path="/" element={<Home />} />
         <Route path='/auth' element={<StudentAuth/>} />
         <Route path="/complete-profile" element={<CompleteProfile />} />
+        <Route path="/profile" element={<Profile />} />
         <Route path="/workshop" element={<Workshops />} />
         <Route path="/courses" element={<Courses />} />
         <Route path="/courses/robotics" element={<Robotics />} />
