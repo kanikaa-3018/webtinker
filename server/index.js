@@ -5,6 +5,10 @@ const cors = require("cors");
 const dotenv = require("dotenv");
 const Stripe = require("stripe");
 const contactRoutes = require("./routes/contactRoutes");
+const authRoutes = require("./routes/authRoutes");
+const session = require("express-session");
+const passport = require("passport");
+require("./passport"); 
 const connectDB = require("./config/db");
 dotenv.config();
 
@@ -13,18 +17,31 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
 connectDB();
 const corsOptions = {
-  origin: "https://localhost:5173", 
+  origin: "http://localhost:5173", 
   credentials: true,
 };
 
 app.use(cors(corsOptions));
 app.use(express.json());
+
+app.use(
+  session({
+    secret: "kanika",
+    resave: false,
+    saveUninitialized: true,
+  })
+);
+
+app.use(passport.initialize());
+app.use(passport.session());
+
+app.use("/api/auth", authRoutes);
 app.use("/contact", contactRoutes);
 
 app.post("/create-checkout-session", async (req, res) => {
   try {
     const { item } = req.body;
-    const origin = req.headers.origin || "https://localhost:5173";
+    const origin = req.headers.origin || "http://localhost:5173";
 
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ["card"],
@@ -56,7 +73,7 @@ app.post("/create-checkout-session", async (req, res) => {
 app.post("/create-course-checkout-session", async (req, res) => {
   try {
     const { item, type } = req.body;
-    const origin = req.headers.origin || "https://localhost:5173"; 
+    const origin = req.headers.origin || "http://localhost:5173"; 
 
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ["card"],

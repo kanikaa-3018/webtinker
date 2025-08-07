@@ -129,6 +129,8 @@ import Kits from './pages/Kits';
 import Success from './pages/Success';
 import Cancel from './pages/Cancel';
 import CourseSuccess from './pages/CourseSuccess';
+import StudentAuth from './pages/StudentAuth';
+import CompleteProfile from './pages/CompleteProfile';
 
 // Component handling routes with animation
 const AnimatedRoutes = () => {
@@ -138,6 +140,8 @@ const AnimatedRoutes = () => {
     <PageTransition>
       <Routes location={location} key={location.pathname}>
         <Route path="/" element={<Home />} />
+        <Route path='/auth' element={<StudentAuth/>} />
+        <Route path="/complete-profile" element={<CompleteProfile />} />
         <Route path="/workshop" element={<Workshops />} />
         <Route path="/courses" element={<Courses />} />
         <Route path="/courses/robotics" element={<Robotics />} />
