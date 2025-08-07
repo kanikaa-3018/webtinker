@@ -1,4 +1,5 @@
 import { Container, Row, Col } from "react-bootstrap";
+import { motion } from "framer-motion";
 
 const Services = () => {
   const services = [
@@ -35,53 +36,53 @@ const Services = () => {
   return (
     <div className="container-xxl py-5">
       <style>{`
-      .service-tile {
-        background: #ffffff;
-        border: 1px solid #eaeaea;
-        border-radius: 16px;
-        padding: 24px;
-        height: 100%;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        transition: all 0.3s ease;
-      }
+        .service-tile {
+          background: #ffffff;
+          border: 1px solid #eaeaea;
+          border-radius: 16px;
+          padding: 24px;
+          height: 100%;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          transition: all 0.3s ease;
+        }
 
-      .service-tile:hover {
-        transform: translateY(-6px);
-        border-color: #41aff8;
-        box-shadow: 0 12px 24px rgba(0,0,0,0.06);
-        background: #f8fbff;
-      }
+        .service-tile:hover {
+          transform: translateY(-6px);
+          border-color: #41aff8;
+          box-shadow: 0 12px 24px rgba(0,0,0,0.06);
+          background: #f8fbff;
+        }
 
-      .icon-circle {
-        width: 60px;
-        height: 60px;
-        background: #e8f5ff;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin-bottom: 16px;
-      }
+        .icon-circle {
+          width: 60px;
+          height: 60px;
+          background: #e8f5ff;
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          margin-bottom: 16px;
+        }
 
-      .icon-circle img {
-        width: 30px;
-        height: 30px;
-      }
+        .icon-circle img {
+          width: 30px;
+          height: 30px;
+        }
 
-      .service-title {
-        font-size: 18px;
-        font-weight: 600;
-        margin-bottom: 8px;
-        color: #1f1f1f;
-      }
+        .service-title {
+          font-size: 18px;
+          font-weight: 600;
+          margin-bottom: 8px;
+          color: #1f1f1f;
+        }
 
-      .service-desc {
-        font-size: 14px;
-        color: #5a5a5a;
-      }
-    `}</style>
+        .service-desc {
+          font-size: 14px;
+          color: #5a5a5a;
+        }
+      `}</style>
 
       <Container>
         <Row className="g-2 text-center mb-4">
@@ -99,14 +100,19 @@ const Services = () => {
 
         <Row className="g-4">
           {services.map((service, index) => (
-            <Col
-              key={service.id}
-              lg={3}
-              sm={6}
-              className="wow fadeInUp"
-              data-wow-delay={`${0.1 + index * 0.2}s`}
-            >
-              <div className="service-tile">
+            <Col key={service.id} lg={3} sm={6}>
+              <motion.div
+                className="service-tile"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{
+                  duration: 0.5,
+                  delay: index * 0.2,
+                  type: "spring",
+                  stiffness: 100,
+                }}
+              >
                 <div className="icon-circle">
                   <img src={service.img} alt={service.title} />
                 </div>
@@ -114,7 +120,7 @@ const Services = () => {
                   <div className="service-title">{service.title}</div>
                   <div className="service-desc">{service.description}</div>
                 </div>
-              </div>
+              </motion.div>
             </Col>
           ))}
         </Row>

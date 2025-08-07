@@ -1,4 +1,5 @@
 import React, { useRef } from "react";
+import { motion } from "framer-motion";
 
 const testimonials = [
   {
@@ -22,13 +23,7 @@ const testimonials = [
     feedback:
       "The Robotics Kit was so much fun! I built my own robot and showed it in our science exhibition. Thank you!",
   },
-  {
-    name: "Riya Sharma",
-    role: "8th Grade Student",
-    image: "https://randomuser.me/api/portraits/women/65.jpg",
-    feedback:
-      "The Robotics Kit was so much fun! I built my own robot and showed it in our science exhibition. Thank you!",
-  },
+  // Add more unique testimonials as needed
   {
     name: "Aryan Mehta",
     role: "Parent of 6th Grader",
@@ -67,7 +62,7 @@ const Testimonials = () => {
   return (
     <section
       style={{
-        background: "linear-gradient(135deg, #e0f7fa 0%, #f0f5ff 100%)",
+        background: "linear-gradient(135deg, #f8fafc, #dbeafe)",
         padding: "80px 20px",
         position: "relative",
       }}
@@ -131,7 +126,10 @@ const Testimonials = () => {
         }
       `}</style>
 
-      <h2
+      <motion.h2
+        initial={{ opacity: 0, y: -40 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
         style={{
           textAlign: "center",
           fontSize: "2.5rem",
@@ -139,29 +137,22 @@ const Testimonials = () => {
           color: "#0f172a",
         }}
       >
-        💬 What Our Learners Say
-      </h2>
+         What Our Learners Say
+      </motion.h2>
 
-      {/* Arrows */}
-      <div
-        className="arrow-btn"
-        style={{ left: "15px" }}
-        onClick={() => scroll("left")}
-      >
-        <i className="fas fa-chevron-left" />
-      </div>
-      <div
-        className="arrow-btn"
-        style={{ right: "15px" }}
-        onClick={() => scroll("right")}
-      >
-        <i className="fas fa-chevron-right" />
-      </div>
+      <div className="arrow-btn" style={{ left: "15px" }} onClick={() => scroll("left")}>❮</div>
+      <div className="arrow-btn" style={{ right: "15px" }} onClick={() => scroll("right")}>❯</div>
 
-      {/* Scrollable Cards */}
       <div ref={scrollRef} className="testimonial-track testimonial-container">
         {testimonials.map((t, i) => (
-          <div key={i} className="testimonial-card">
+          <motion.div
+            key={i}
+            className="testimonial-card"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: i * 0.1 }}
+          >
             <img
               src={t.image}
               alt={t.name}
@@ -183,13 +174,21 @@ const Testimonials = () => {
             >
               {t.name}
             </h3>
-            <p style={{ fontStyle: "italic", fontSize: "0.85rem", color: "#555" }}>
+            <p
+              style={{ fontStyle: "italic", fontSize: "0.85rem", color: "#555" }}
+            >
               {t.role}
             </p>
-            <p style={{ marginTop: "12px", fontSize: "0.95rem", color: "#334155" }}>
+            <p
+              style={{
+                marginTop: "12px",
+                fontSize: "0.95rem",
+                color: "#334155",
+              }}
+            >
               “{t.feedback}”
             </p>
-          </div>
+          </motion.div>
         ))}
       </div>
     </section>

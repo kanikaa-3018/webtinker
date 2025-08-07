@@ -1,4 +1,5 @@
 import { Container, Row, Col, Accordion } from 'react-bootstrap';
+import { motion } from 'framer-motion';
 
 const FAQ = () => {
   const faqs = [
@@ -32,38 +33,51 @@ const FAQ = () => {
   return (
     <Container className="py-5">
       <Row className="g-5">
-        <Col lg={6} className="wow fadeInUp" data-wow-delay="0.1s">
-          <h6 className="section-title bg-white text-start text-primary pe-3">FAQs</h6>
-          <h1 className="mb-4">Frequently Asked Questions</h1>
-          <p className="mb-4">Here are some common questions about our courses and programs. If you don't find the answer you're looking for, feel free to contact us!</p>
-          <div className="d-flex align-items-center mb-4">
-            <div
-  className="d-flex align-items-center justify-content-center rounded shadow"
-  style={{
-    width: '70px',
-    height: '70px',
-    backgroundColor: '#41aff8',
-    boxShadow: '0 4px 10px rgba(0, 0, 0, 0.2)'
-  }}
->
-  <i className="fas fa-phone-alt text-white" style={{ fontSize: '24px' }}></i>
-</div>
-
-            <div className="ps-4">
-              <h5 className="mb-2">Call to ask any question</h5>
-              <h4 className="text-primary mb-0">+91 6375829791</h4>
+        <Col lg={6}>
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+          >
+            <h6 className="section-title bg-white text-start text-primary pe-3">FAQs</h6>
+            <h1 className="mb-4">Frequently Asked Questions</h1>
+            <p className="mb-4">Here are some common questions about our courses and programs. If you don't find the answer you're looking for, feel free to contact us!</p>
+            <div className="d-flex align-items-center mb-4">
+              <div
+                className="d-flex align-items-center justify-content-center rounded shadow"
+                style={{
+                  width: '70px',
+                  height: '70px',
+                  backgroundColor: '#41aff8',
+                  boxShadow: '0 4px 10px rgba(0, 0, 0, 0.2)'
+                }}
+              >
+                <i className="fas fa-phone-alt text-white" style={{ fontSize: '24px' }}></i>
+              </div>
+              <div className="ps-4">
+                <h5 className="mb-2">Call to ask any question</h5>
+                <h4 className="text-primary mb-0">+91 6375829791</h4>
+              </div>
             </div>
-          </div>
+          </motion.div>
         </Col>
-        <Col lg={6} className="wow fadeInUp" data-wow-delay="0.3s">
-          <Accordion defaultActiveKey="0">
-            {faqs.map((faq, index) => (
-              <Accordion.Item eventKey={index.toString()} key={faq.id}>
-                <Accordion.Header>{faq.question}</Accordion.Header>
-                <Accordion.Body>{faq.answer}</Accordion.Body>
-              </Accordion.Item>
-            ))}
-          </Accordion>
+        <Col lg={6}>
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            viewport={{ once: true }}
+          >
+            <Accordion defaultActiveKey="0">
+              {faqs.map((faq, index) => (
+                <Accordion.Item eventKey={index.toString()} key={faq.id}>
+                  <Accordion.Header>{faq.question}</Accordion.Header>
+                  <Accordion.Body>{faq.answer}</Accordion.Body>
+                </Accordion.Item>
+              ))}
+            </Accordion>
+          </motion.div>
         </Col>
       </Row>
     </Container>

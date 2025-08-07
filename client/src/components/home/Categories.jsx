@@ -1,85 +1,6 @@
-// import { Container, Row, Col } from 'react-bootstrap';
-// import { Link } from 'react-router-dom';
-
-// const Categories = () => {
-//   const categories = [
-//     {
-//       id: 1,
-//       title: 'Internet Of Things (IoT)',
-//       icon: '/images/cat2.png',
-//     },
-//     {
-//       id: 2,
-//       title: 'Robotics',
-//       icon: '/images/cat10.png',
-
-//     },
-//     {
-//       id: 3,
-//       title: 'Drone Technology',
-//       icon: '/images/cat11.png',
-//     },
-//     {
-//       id: 4,
-//       title: 'Python',
-//       icon: '/images/cat3.png',
-//     },
-//     {
-//       id: 5,
-//       title: 'App Development',
-//       icon: '/images/cat5.png',
-//     },
-//     {
-//       id: 6,
-//       title: 'Web Development',
-//       icon: '/images/cat6.png',
-//     },
-//     {
-//       id: 7,
-//       title: 'MySQL',
-//       icon: '/images/cat7.png',
-//     },
-//     {
-//       id: 8,
-//       title: '3D Modeling',
-//       icon: '/images/cat12.png',
-//     },
-//   ];
-
-//   return (
-//     <div className="container-xxl py-5 category">
-//       <Container>
-//         <div className="text-center wow fadeInUp" data-wow-delay="0.1s">
-//           <h6 className="section-title bg-white text-center px-3">Categories</h6>
-//           <h1 className="mb-5" style={{ color: '#41aff8' }}>Popular Topics to Explore</h1>
-//         </div>
-
-//         <Row className="justify-content-center">
-//           {categories.map((category, index) => (
-//             <Col key={category.id} lg={3} md={6} className="text-center mb-4">
-//               <div
-//                 className="content shadow p-3 mb-2 wow fadeInUp"
-//                 data-wow-delay={`${0.3 + index * 0.1}s`}
-//               >
-//                 <img src={category.icon} className="img-fluid mb-2" alt="categories" />
-//                 <h5 className="my-2">
-//                   <Link to="/courses" className="text-center">
-//                     {category.title}
-//                   </Link>
-//                 </h5>
-//               </div>
-//             </Col>
-//           ))}
-//         </Row>
-//       </Container>
-//     </div>
-//   );
-// };
-
-// export default Categories;
-
 import { Container, Row, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 
 const Categories = () => {
   const categories = [
@@ -179,11 +100,9 @@ const Categories = () => {
       `}</style>
 
       <Container>
-        <div className="text-center wow fadeInUp" data-wow-delay="0.1s">
+        <div className="text-center mb-5">
           <h6 className="section-title bg-white text-center px-3">Categories</h6>
-          <h1 className="mb-5" style={{ color: "#41aff8" }}>
-            Popular Topics to Explore
-          </h1>
+          <h1 style={{ color: "#41aff8" }}>Popular Topics to Explore</h1>
         </div>
 
         <Row className="justify-content-center">
@@ -193,9 +112,17 @@ const Categories = () => {
                 to={category.path || "/courses"}
                 className="text-decoration-none text-dark"
               >
-                <div
-                  className="category-card wow fadeInUp"
-                  data-wow-delay={`${0.2 + index * 0.1}s`}
+                <motion.div
+                  className="category-card"
+                  initial={{ opacity: 0, y: 40 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{
+                    duration: 0.6,
+                    delay: index * 0.15,
+                    type: "spring",
+                    stiffness: 80,
+                  }}
                 >
                   <img
                     src={category.icon}
@@ -213,7 +140,7 @@ const Categories = () => {
                   >
                     {category.title}
                   </h6>
-                </div>
+                </motion.div>
               </Link>
             </Col>
           ))}

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
 const stories = [
   {
@@ -32,22 +33,13 @@ const stories = [
 
 const SuccessStories = () => {
   const [index, setIndex] = useState(0);
-  const [fade, setFade] = useState(true);
-
-  const handleTransition = (newIndex) => {
-    setFade(false);
-    setTimeout(() => {
-      setIndex(newIndex);
-      setFade(true);
-    }, 200);
-  };
 
   const nextStory = () => {
-    handleTransition((index + 1) % stories.length);
+    setIndex((index + 1) % stories.length);
   };
 
   const prevStory = () => {
-    handleTransition((index - 1 + stories.length) % stories.length);
+    setIndex((index - 1 + stories.length) % stories.length);
   };
 
   const story = stories[index];
@@ -69,76 +61,83 @@ const SuccessStories = () => {
           color: "#0f172a",
         }}
       >
-        🚀 Success Stories from Our Young Innovators
+        Success Stories from Our Young Innovators
       </h2>
 
-      <div
-        className={`story-card ${fade ? "fade-in" : "fade-out"}`}
-        style={{
-          display: "flex",
-          maxWidth: "1000px",
-          margin: "0 auto",
-          background: "#fff",
-          borderRadius: "16px",
-          boxShadow: "0 12px 24px rgba(0,0,0,0.08)",
-          overflow: "hidden",
-          alignItems: "center",
-          transition: "all 0.4s ease-in-out",
-          cursor: "pointer",
-        }}
-      >
-        {/* Image Section */}
-        <div style={{ flex: 1 }}>
-          <img
-            src={story.image}
-            alt={story.name}
-            style={{
-              width: "100%",
-              height: "100%",
-              objectFit: "cover",
-              maxHeight: "360px",
-              transition: "transform 0.3s ease-in-out",
-            }}
-          />
-        </div>
-
-        {/* Content Section */}
-        <div
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={index}
+          className="story-card"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -20 }}
+          transition={{ duration: 0.4 }}
           style={{
-            flex: 1.5,
-            padding: "30px",
-            position: "relative",
+            display: "flex",
+            maxWidth: "1000px",
+            margin: "0 auto",
+            background: "#fff",
+            borderRadius: "16px",
+            boxShadow: "0 12px 24px rgba(0,0,0,0.08)",
+            overflow: "hidden",
+            alignItems: "center",
+            transition: "all 0.4s ease-in-out",
+            cursor: "pointer",
           }}
         >
-          <h3 style={{ fontSize: "1.5rem", color: "#0c4a6e" }}>{story.title}</h3>
-          <p style={{ fontSize: "1rem", margin: "10px 0" }}>{story.description}</p>
-          <p
+          {/* Image Section */}
+          <div style={{ flex: 1 }}>
+            <img
+              src={story.image}
+              alt={story.name}
+              style={{
+                width: "100%",
+                height: "100%",
+                objectFit: "cover",
+                maxHeight: "360px",
+                transition: "transform 0.3s ease-in-out",
+              }}
+            />
+          </div>
+
+          {/* Content Section */}
+          <div
             style={{
-              fontWeight: "bold",
-              color: "#1e3a8a",
-              marginBottom: "6px",
+              flex: 1.5,
+              padding: "30px",
+              position: "relative",
             }}
           >
-            — {story.name}, {story.location}
-          </p>
-          <div style={{ display: "flex", gap: "8px", flexWrap: "wrap" }}>
-            {story.tags.map((tag, i) => (
-              <span
-                key={i}
-                style={{
-                  background: "#dbeafe",
-                  color: "#1e40af",
-                  fontSize: "0.8rem",
-                  padding: "4px 10px",
-                  borderRadius: "999px",
-                }}
-              >
-                #{tag}
-              </span>
-            ))}
+            <h3 style={{ fontSize: "1.5rem", color: "#0c4a6e" }}>{story.title}</h3>
+            <p style={{ fontSize: "1rem", margin: "10px 0" }}>{story.description}</p>
+            <p
+              style={{
+                fontWeight: "bold",
+                color: "#1e3a8a",
+                marginBottom: "6px",
+              }}
+            >
+              — {story.name}, {story.location}
+            </p>
+            <div style={{ display: "flex", gap: "8px", flexWrap: "wrap" }}>
+              {story.tags.map((tag, i) => (
+                <span
+                  key={i}
+                  style={{
+                    background: "#dbeafe",
+                    color: "#1e40af",
+                    fontSize: "0.8rem",
+                    padding: "4px 10px",
+                    borderRadius: "999px",
+                  }}
+                >
+                  #{tag}
+                </span>
+              ))}
+            </div>
           </div>
-        </div>
-      </div>
+        </motion.div>
+      </AnimatePresence>
 
       {/* Arrows */}
       <button
@@ -200,17 +199,6 @@ const SuccessStories = () => {
 
       {/* Fade Animation Styles */}
       <style>{`
-        .fade-in {
-          opacity: 1;
-          transform: translateY(0);
-          transition: all 0.4s ease-in;
-        }
-        .fade-out {
-          opacity: 0;
-          transform: translateY(20px);
-          transition: all 0.3s ease-out;
-        }
-
         .story-card:hover {
           transform: scale(1.01);
         }
